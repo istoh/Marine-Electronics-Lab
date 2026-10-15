@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright © 2026 Isto Hunttila
+# SPDX-License-Identifier: MIT
 """Read-only SocketCAN candump-log summarizer. No CAN interface opened, no transmissions.
 
 Input: candump -L/-l style lines e.g.
