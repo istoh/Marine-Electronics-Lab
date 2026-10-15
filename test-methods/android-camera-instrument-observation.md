@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # Android phone camera for instrument display measurements
 
 **Status:** proposed camera acquisition path, not validated on hardware.
