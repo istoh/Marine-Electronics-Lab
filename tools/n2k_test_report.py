@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright © 2026 Isto Hunttila
+# SPDX-License-Identifier: MIT
 """Generate an evidence-based NMEA 2000 DUT test report from observations and criteria.
 Read-only: no CAN I/O. Never infer display behavior from a passive capture.
 """
