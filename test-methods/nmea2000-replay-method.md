@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # MEL-N2K — NMEA 2000 bench test method
 
 Status: DRAFT / NOT EXECUTED
