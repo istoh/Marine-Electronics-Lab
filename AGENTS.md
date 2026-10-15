@@ -23,3 +23,6 @@ Each test includes a unique ID, product and firmware version, source reference, 
 
 ## Quality assurance
 AI-generated technical conclusions require source verification. Mark unverified conclusions clearly. Preserve raw measurement records and document corrections separately. Distinguish manufacturer specifications, standards requirements and editorial comparison criteria.
+
+## Copyright and attribution policy
+All original Marine Electronics Lab source code and research documents must identify the copyright holder as `Copyright © 2026 Isto Hunttila` (update the year appropriately for future works). Python files use a leading `#` comment; Markdown documents use an HTML comment near the top. Preserve third-party notices and licenses. Do not claim copyright over manufacturer manuals, standards, external quotations, or third-party material. Do not add SPDX license identifiers or redistribute under a license until the repository owner explicitly approves the license choice.
