@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # NMEA 2000 instrument compatibility matrix — initial extraction (2026-10-15)
 
 ## Scope and confidence
