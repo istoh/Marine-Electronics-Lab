@@ -1,4 +1,5 @@
 # Copyright © 2026 Isto Hunttila
+# SPDX-License-Identifier: MIT
 import sys
 import unittest
 from pathlib import Path
