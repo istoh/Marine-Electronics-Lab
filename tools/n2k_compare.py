@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Isto Hunttila
 """Compare a read-only candump capture with the documentation PGN matrix.
 
 Observation of a PGN does NOT prove the DUT supports it: traffic can come from
