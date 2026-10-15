@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # NMEA 2000 documentation/capture comparison
 
 This tool **does not send CAN messages**. It reads an existing candump log and compares observed PGN identifiers against the repository's manufacturer-documentation matrix.
