@@ -35,16 +35,16 @@ def change_score(previous, current, cv2):
     return float(cv2.mean(cv2.absdiff(a, b))[0])
 
 def detect_scores(samples, threshold, consecutive, min_gap_ms):
-    """Emit confirmed onset timestamps from (milliseconds, score) samples.
+    """Confirm a stable new state relative to the last accepted baseline.
 
-    Confirmation requires consecutive above-threshold samples. A transition
-    begins at the first sample of the confirmed run. Rearm only after a
-    below-threshold sample; min_gap_ms suppresses nearby duplicate events.
+    Samples are (timestamp_ms, score_to_baseline). On detection the caller
+    must update its image baseline; this pure helper operates on score series
+    and rearms when scores return below threshold.
     """
     if not (math.isfinite(threshold) and threshold > 0):
         raise ValueError("threshold must be positive and finite")
-    if consecutive < 1 or min_gap_ms < 0:
-        raise ValueError("consecutive must be >=1 and min_gap_ms >=0")
+    if type(consecutive) is not int or consecutive < 1 or not math.isfinite(min_gap_ms) or min_gap_ms < 0:
+        raise ValueError("invalid confirmation or gap")
     result, streak, onset, armed, last = [], 0, None, True, -math.inf
     previous_time = -math.inf
     for timestamp_ms, score in samples:
@@ -63,6 +63,46 @@ def detect_scores(samples, threshold, consecutive, min_gap_ms):
         else:
             streak, onset, armed = 0, None, True
     return result
+
+
+def detect_frame_states(frames, threshold, consecutive, min_gap_ms, cv2):
+    """Compare frames against the last accepted stable state, not adjacent frames.
+
+    frames: iterable of (presentation_ms, BGR ROI, full_frame).
+    Returns (onset_ms, score, full_frame) candidate changes.
+    """
+    if not (math.isfinite(threshold) and threshold > 0):
+        raise ValueError("threshold must be positive and finite")
+    if type(consecutive) is not int or consecutive < 1 or not math.isfinite(min_gap_ms) or min_gap_ms < 0:
+        raise ValueError("invalid confirmation or gap")
+    baseline = None
+    candidate = None
+    streak = 0
+    last_event = -math.inf
+    previous_time = -math.inf
+    events = []
+    for timestamp, roi, full_frame in frames:
+        if not math.isfinite(timestamp) or timestamp < previous_time:
+            raise ValueError("Invalid or non-monotonic video timestamp")
+        previous_time = timestamp
+        if baseline is None:
+            baseline = roi.copy()
+            continue
+        score = change_score(baseline, roi, cv2)
+        if score < threshold:
+            streak = 0
+            candidate = None
+            continue
+        if streak == 0:
+            candidate = (timestamp, score, full_frame.copy())
+        streak += 1
+        if streak >= consecutive and timestamp - last_event >= min_gap_ms:
+            events.append(candidate)
+            last_event = timestamp
+            baseline = roi.copy()
+            streak = 0
+            candidate = None
+    return events
 
 def analyze_video(video, roi, threshold, consecutive, min_gap_ms, output, trial_id, clock_domain):
     try:
@@ -103,9 +143,9 @@ def analyze_video(video, roi, threshold, consecutive, min_gap_ms, output, trial_
         capture.release()
     if index < 2:
         raise ValueError("At least two frames required")
-    if len(samples) > 1 and all(t == samples[0][0] for t, _ in samples):
+    if len(frames_for_analysis) > 1 and all(t == frames_for_analysis[0][0] for t, _, _ in frames_for_analysis):
         raise ValueError("Video decoder returned no usable presentation timeline")
-    changes = detect_scores(samples, threshold, consecutive, min_gap_ms)
+    changes = detect_frame_states(frames_for_analysis, threshold, consecutive, min_gap_ms, cv2)
     events = []
     for number, (timestamp, score) in enumerate(changes, 1):
         sample_index = next(i for i, (t, _) in enumerate(samples) if t == timestamp)
@@ -137,7 +177,7 @@ def analyze_video(video, roi, threshold, consecutive, min_gap_ms, output, trial_
             "Variable frame rate and decoder timestamp accuracy require independent validation",
             "Camera movement, autoexposure, reflections and animations may trigger false changes",
             "No synchronization with CAN timestamps; do not compute end-to-end latency without measured offsets",
-            "Frame evidence is from the first above-threshold sample; onset uncertainty includes frame interval",
+            "Frame evidence is from the first candidate state sample; onset uncertainty includes frame interval",
             "A display change is not automatically a validated instrument value change",
         ],
     }
