@@ -1,3 +1,4 @@
+# Copyright © 2026 Isto Hunttila
 import json
 import sys
 import tempfile
