@@ -1,4 +1,5 @@
 # Copyright © 2026 Isto Hunttila
+# SPDX-License-Identifier: MIT
 import csv
 import sys
 import tempfile
