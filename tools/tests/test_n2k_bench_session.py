@@ -1,3 +1,4 @@
+# Copyright © 2026 Isto Hunttila
 import sys
 import unittest
 from pathlib import Path
