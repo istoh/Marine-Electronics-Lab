@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # Instrument market survey — 2026-10-15
 
 Initial manufacturer-sourced inventory, **not an exhaustive census or current-availability claim**. Includes historical instruments and some adjacent displays to be classified during review.
