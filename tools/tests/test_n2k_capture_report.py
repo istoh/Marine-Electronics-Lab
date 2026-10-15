@@ -1,4 +1,5 @@
 # Copyright © 2026 Isto Hunttila
+# SPDX-License-Identifier: MIT
 import unittest
 from tools.n2k_capture_report import decode_id
 
