@@ -1,0 +1,25 @@
+{
+  "dut": "REPLACE_WITH_DUT_MODEL",
+  "firmware": "REPLACE_WITH_VERIFIED_VERSION",
+  "operator": "REPLACE_WITH_OPERATOR",
+  "tests": [
+    {
+      "test_id": "MEL-N2K-001-HEADING",
+      "pgn": 127250,
+      "evaluation": "numeric_tolerance",
+      "expected_value": 120,
+      "expected_unit": "deg",
+      "absolute_tolerance": 1,
+      "requirement_ref": "REPLACE_WITH_SOURCE_AND_PAGE"
+    },
+    {
+      "test_id": "MEL-N2K-001-WIND",
+      "pgn": 130306,
+      "evaluation": "numeric_tolerance",
+      "expected_value": 8,
+      "expected_unit": "m/s",
+      "absolute_tolerance": 0.5,
+      "requirement_ref": "REPLACE_WITH_SOURCE_AND_PAGE"
+    }
+  ]
+}
