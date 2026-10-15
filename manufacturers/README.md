@@ -1,3 +1,6 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
+
 # Manufacturers
 
 Manufacturer research records and contact information. Product names and brands belong to their respective owners.
