@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # NMEA 2000 automated bench — phase 1
 
 **Status: implementation committed, hardware not tested.** This phase is entirely offline and never opens a CAN interface.
