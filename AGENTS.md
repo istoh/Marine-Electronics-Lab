@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
 # AI Agent Instructions
 
 ## Purpose
@@ -26,3 +27,6 @@ AI-generated technical conclusions require source verification. Mark unverified 
 
 ## Copyright and attribution policy
 All original Marine Electronics Lab source code and research documents must identify the copyright holder as `Copyright © 2026 Isto Hunttila` (update the year appropriately for future works). Python files use a leading `#` comment; Markdown documents use an HTML comment near the top. Preserve third-party notices and licenses. Do not claim copyright over manufacturer manuals, standards, external quotations, or third-party material. Do not add SPDX license identifiers or redistribute under a license until the repository owner explicitly approves the license choice.
+
+## Approved licensing (2026)
+The owner, Isto Hunttila, approved MIT for original software and CC BY 4.0 for original research documents. See root LICENSE and COPYRIGHT.md. Always insert copyright and SPDX headers in new source/Markdown files. Preserve machine-readable CSV/JSON formats and refer to COPYRIGHT.md for their licensing. Do not apply these licenses to third-party content.
