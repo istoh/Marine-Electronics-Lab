@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Isto Hunttila
 """Offline NMEA2000 bench session manifest and timing analysis. Never transmits CAN."""
 import argparse
 import csv
