@@ -1,0 +1,15 @@
+{
+  "session_id": "REPLACE_WITH_UNIQUE_ID",
+  "dut": "REPLACE_WITH_MODEL_AND_SERIAL_PSEUDONYM",
+  "firmware": "REPLACE_WITH_VERSION",
+  "operator": "REPLACE_WITH_OPERATOR",
+  "bench_isolated_from_vessel": true,
+  "mode": "offline_analysis",
+  "capture_log": "REPLACE_WITH_PATH",
+  "video_file": "REPLACE_WITH_PATH",
+  "camera_fps": null,
+  "video_exposure_uncertainty_ms": null,
+  "measured_clock_offsets_ns": {},
+  "clock_sync_method": "NOT_MEASURED",
+  "notes": "Clock offsets must be independently measured before reporting timing"
+}
