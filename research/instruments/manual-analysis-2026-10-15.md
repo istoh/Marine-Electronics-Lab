@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # Marine instrument manual analysis — initial pass (2026-10-15)
 
 **Status:** Preliminary desk research; not a complete page-by-page review of all 35 candidates. The six representative products below have discoverable manuals, manufacturer documentation, or both. No bench tests were performed. Confirm firmware applicability before relying on behavior.
