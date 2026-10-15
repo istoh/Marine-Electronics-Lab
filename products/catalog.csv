@@ -1,0 +1,7 @@
+product_id,manufacturer_id,model,category,variant,firmware,official_url,source_id,status
+GNX20,GARMIN,GNX 20,instrument_display,,,,,candidate
+TRITON2,BG,Triton2,instrument_display,,,,,candidate
+I70S,RAYMARINE,i70s,instrument_display,,,,,candidate
+IS42,SIMRAD,IS42,instrument_display,,,,,candidate
+FI70,FURUNO,FI-70,instrument_display,,,,,candidate
+MULTIGRAPHIC,NKE,Multigraphic,instrument_display,,,,,candidate
