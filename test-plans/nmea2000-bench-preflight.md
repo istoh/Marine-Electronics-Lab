@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # NMEA 2000 bench preflight checklist
 
 Status: DRAFT. Never use on an operational vessel bus.
