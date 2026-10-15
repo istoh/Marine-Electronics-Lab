@@ -1,0 +1,11 @@
+# Third-party source files: metadata only in public Git
+*.pdf
+*.doc
+*.docx
+*.zip
+# Raw media and generated data
+*.mp4
+*.mov
+*.wav
+__pycache__/
+.env
