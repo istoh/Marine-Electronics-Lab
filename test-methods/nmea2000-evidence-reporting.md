@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Copyright © 2026 Isto Hunttila -->
 # Display observation + PGN test report workflow
 
 **Status: draft, code committed but not executed against hardware.** Works entirely on files and never transmits CAN traffic.
