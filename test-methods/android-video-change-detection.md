@@ -24,10 +24,10 @@ Output: `events.csv` with `display_changed` events compatible with `n2k_bench_se
 
 ## Limitations and follow-ups
 
-- This prototype compares each frame against the immediately preceding frame. Very brief changes, animations, reflections, autofocus and moving camera may cause missed or false detections.
-- The detector's `consecutive` confirmation requires sustained frame-to-frame change. A display that switches once and then stays stable may only create one high-score sample and be missed. **Do not use for latency measurements until an improved baseline/state detector is implemented and validated.**
+- This prototype compares each ROI against the last accepted stable baseline. A single display transition that remains stable can be confirmed after the configured number of frames. Very brief changes, animations, reflections, autofocus and moving camera may still cause missed or false detections.
+- The detector's `consecutive` confirmation requires a sustained new state relative to the accepted baseline. A candidate onset is retrospective; it is not a measured exposure time. **Do not use for latency measurements until real-video timestamp and clock synchronization validation is complete.**
 - Event timestamps mark the first threshold-crossing sample; confirmation occurs later. Report uncertainty due to frame interval, exposure, display refresh and detection logic.
-- Planned improvements: baseline/state comparison with hysteresis; direct container PTS inspection for variable frame rate; explicit synchronization-marker workflow; synthetic-video integration tests; ROI presets and visual calibration.
+- Planned improvements: bounded-memory streaming instead of retaining all decoded frames; direct container PTS inspection for variable frame rate; explicit synchronization-marker workflow; synthetic-video integration tests; ROI presets, camera-motion compensation and visual calibration.
 
 ## Configuration tickets
 
