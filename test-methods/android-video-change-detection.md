@@ -3,7 +3,7 @@
 
 # Android instrument video change detection
 
-**Status:** prototype; no real Android capture or synchronized NMEA 2000 bench validation yet.
+**Status:** prototype; synthetic MJPG video test run locally on 2026-10-16 (2/2 expected transitions detected). No real Android capture or synchronized NMEA 2000 bench validation yet.
 
 ## Setup
 
@@ -27,7 +27,7 @@ Output: `events.csv` with `display_changed` events compatible with `n2k_bench_se
 - This prototype compares each ROI against the last accepted stable baseline. A single display transition that remains stable can be confirmed after the configured number of frames. Very brief changes, animations, reflections, autofocus and moving camera may still cause missed or false detections.
 - The detector's `consecutive` confirmation requires a sustained new state relative to the accepted baseline. A candidate onset is retrospective; it is not a measured exposure time. **Do not use for latency measurements until real-video timestamp and clock synchronization validation is complete.**
 - Event timestamps mark the first threshold-crossing sample; confirmation occurs later. Report uncertainty due to frame interval, exposure, display refresh and detection logic.
-- Planned improvements: bounded-memory streaming instead of retaining all decoded frames; direct container PTS inspection for variable frame rate; explicit synchronization-marker workflow; synthetic-video integration tests; ROI presets, camera-motion compensation and visual calibration.
+- Planned improvements: direct container PTS inspection for variable frame rate; explicit synchronization-marker workflow; ROI presets, camera-motion compensation and visual calibration.
 
 ## Configuration tickets
 
@@ -43,3 +43,6 @@ python3 -m unittest discover -s tools/tests -p 'test_android_video_changes.py' -
 ```
 
 No real hardware or phone video test is claimed.
+
+## Synthetic test evidence (2026-10-16)
+A local 17-frame MJPG AVI at 25 fps was generated with grayscale levels 0 (5 frames), 255 (6 frames), and 0 (6 frames). With ROI (5,5,60,40), threshold 15, consecutive 2, and gap 0 ms, the detector reported two candidate transitions at presentation times 200 ms and 440 ms, matching the two programmed state changes. This is a functional integration smoke test only; it does not validate Android VFR footage, capture exposure timestamps, or physical instrument latency.
